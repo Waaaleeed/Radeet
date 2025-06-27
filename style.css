@@ -1,0 +1,12 @@
+
+:root {
+  --primary: #003366;
+  --secondary: #cc0000;
+  --accent: #ffcc00;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --radius: 12px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease-in-out;
+}
+/* ... باقي التنسيق كما في الرد السابق ... */

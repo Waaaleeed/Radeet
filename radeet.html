@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام راديت الذكي - بلدية بني ملال</title>
+
+    <!-- الخطوط والأيقونات -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- ملف التنسيق الرئيسي -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- رأس الصفحة -->
+    <header>
+      <div class="top-bar">
+        <button id="lang-toggle">🌐 عربي</button>
+        <button id="dark-toggle">🌙</button>
+      </div>
+
+      <div class="logo">
+        <img src="logo.png" alt="شعار بلدية بني ملال" />
+        <h1 data-i18n="title">نظام راديت الذكي</h1>
+      </div>
+
+      <nav>
+        <button class="nav-btn" onclick="showPage('home')">
+          <i class="fas fa-home"></i> <span data-i18n="nav_home">الرئيسية</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('track')">
+          <i class="fas fa-search"></i> <span data-i18n="nav_track">تتبع الشكاية</span>
+        </button>
+        <button class="nav-btn" onclick="showPage('appointment')">
+          <i class="fas fa-calendar-check"></i> <span data-i18n="nav_appointment">حجز موعد</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main>
+      <div class="page-container">
+
+        <!-- صفحة الرئيسية -->
+        <section id="home" class="page active">
+          <h2 data-i18n="welcome">مرحبًا بكم في نظام راديت الذكي</h2>
+          <p data-i18n="desc">نظام متكامل لإدارة الشكايات والمواعيد.</p>
+        </section>
+
+        <!-- صفحة تتبع الشكاية -->
+        <section id="track" class="page">
+          <h2 data-i18n="track_title">تتبع الشكاية</h2>
+          <form id="track-form">
+            <input type="text" id="tracking-number" placeholder="رقم التتبع" required />
+            <button type="submit" data-i18n="btn_track">تتبع</button>
+          </form>
+          <div id="track-result"></div>
+        </section>
+
+        <!-- صفحة حجز موعد -->
+        <section id="appointment" class="page">
+          <h2 data-i18n="appoint_title">حجز موعد</h2>
+          <form id="appointment-form">
+            <input type="text" id="name" placeholder="الاسم الكامل" required />
+            <input type="tel" id="phone" placeholder="رقم الهاتف" required />
+            <select id="service" required>
+              <option value="">اختر الخدمة</option>
+              <option value="building">رخصة بناء</option>
+              <option value="commerce">رخصة تجارية</option>
+              <option value="civil">حالة مدنية</option>
+              <option value="complaint">شكاية</option>
+            </select>
+            <input type="date" id="date" required />
+            <input type="time" id="time" required />
+            <button type="submit" data-i18n="btn_confirm">تأكيد الحجز</button>
+          </form>
+          <div id="appointment-result"></div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- زر وروبوت الدردشة -->
+    <button id="chatbot-button" aria-label="فتح المحادثة">
+      <i class="fas fa-robot"></i>
+    </button>
+
+    <div id="chatbot-popup" role="dialog" aria-modal="true" aria-labelledby="chatbot-header">
+      <div id="chatbot-header">
+        <span data-i18n="chat_title">مساعد راديت الذكي</span>
+        <span id="chatbot-close">×</span>
+      </div>
+      <div id="chatbot-messages"></div>
+      <form id="chatbot-form">
+        <input type="text" id="chatbot-input" placeholder="اكتب رسالتك..." required />
+        <button type="submit">إرسال</button>
+      </form>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+      <span data-i18n="footer">© 2025 نظام راديت الذكي - بلدية بني ملال | جميع الحقوق محفوظة</span>
+    </footer>
+
+    <!-- ************ كود JavaScript المدمج ************ -->
+    <script>
+      // إشعار بتحميل السكريبت بنجاح
+      console.log('✅ radit smart script loaded');
+
+      // 🔧 دالة لتغيير الصفحات عند الضغط على أزرار القائمة
+      function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(page => {
+          page.classList.remove('active');
+        });
+        document.getElementById(pageId).classList.add('active');
+      }
+
+      // 🔧 مثال: تفعيل وإغلاق روبوت الدردشة
+      const chatbotButton = document.getElementById('chatbot-button');
+      const chatbotPopup = document.getElementById('chatbot-popup');
+      const chatbotClose = document.getElementById('chatbot-close');
+
+      chatbotButton.addEventListener('click', () => {
+        chatbotPopup.style.display = 'block';
+      });
+
+      chatbotClose.addEventListener('click', () => {
+        chatbotPopup.style.display = 'none';
+      });
+
+      // ✅ يمكنك هنا إضافة باقي الوظائف لاحقًا (مثل تغيير اللغة أو الوضع الداكن)
+    </script>
+  </body>
+</html>
